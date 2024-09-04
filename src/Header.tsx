@@ -6,7 +6,7 @@ function Header() {
         <span className="brand">Orderly</span>
       </section>
       <section>
-        <a className="d-flex gap-2 text-decoration-none link-opacity-75">
+        <a className="btn btn-outline-primary">
           <span>Sign in</span>
         </a>
       </section>
