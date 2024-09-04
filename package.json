@@ -11,6 +11,7 @@
     "api": "json-server ./api/db.json"
   },
   "dependencies": {
+    "eslint-plugin-react": "^7.35.2",
     "json-server": "^0.17.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
