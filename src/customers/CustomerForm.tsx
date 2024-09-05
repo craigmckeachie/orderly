@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 function CustomerForm() {
   return (
-    <form className="w-50" noValidate>
-      <div className="mb-3 form-group">
+    <form className="row" noValidate>
+      <div className="mb-3 form-group col-md-6">
         <label htmlFor="firstName" className="form-label">
           First Name
         </label>
@@ -17,7 +17,7 @@ function CustomerForm() {
         <div className="invalid-feedback">First Name is required.</div>
       </div>
 
-      <div className="mb-3 form-group">
+      <div className="mb-3 form-group col-md-6">
         <label htmlFor="lastName" className="form-label">
           Last Name
         </label>
@@ -31,7 +31,7 @@ function CustomerForm() {
         <div className="invalid-feedback">Last Name is required.</div>
       </div>
 
-      <div className="mb-3 form-group">
+      {/* <div className="mb-3 form-group col-md-6 ">
         <label htmlFor="username" className="form-label">
           Username
         </label>
@@ -43,9 +43,9 @@ function CustomerForm() {
           placeholder="Enter Username"
         />
         <div className="invalid-feedback">Username is required.</div>
-      </div>
+      </div> */}
 
-      <div className="mb-3 form-group">
+      <div className="mb-3 form-group col-md-12">
         <label htmlFor="address" className="form-label">
           Address
         </label>
@@ -59,7 +59,7 @@ function CustomerForm() {
         <div className="invalid-feedback">Address is required.</div>
       </div>
 
-      <div className="mb-3 form-group">
+      <div className="mb-3 form-group col-md-6">
         <label htmlFor="city" className="form-label">
           City
         </label>
@@ -73,7 +73,7 @@ function CustomerForm() {
         <div className="invalid-feedback">City is required.</div>
       </div>
 
-      <div className="mb-3 form-group">
+      <div className="mb-3 form-group col-md-2">
         <label htmlFor="state" className="form-label">
           State
         </label>
@@ -135,7 +135,7 @@ function CustomerForm() {
         <div className="invalid-feedback">State is required.</div>
       </div>
 
-      <div className="mb-3 form-group">
+      <div className="mb-3 form-group col-md-4">
         <label htmlFor="zip" className="form-label">
           Zip
         </label>
@@ -149,7 +149,7 @@ function CustomerForm() {
         <div className="invalid-feedback">Zip is required.</div>
       </div>
 
-      <div className="mb-3 form-group">
+      <div className="mb-3 form-group col-md-6">
         <label htmlFor="email" className="form-label">
           Email
         </label>
@@ -163,7 +163,7 @@ function CustomerForm() {
         <div className="invalid-feedback">Email is required.</div>
       </div>
 
-      <div className="mb-3 form-group">
+      <div className="mb-3 form-group col-md-6">
         <label htmlFor="phone" className="form-label">
           Phone
         </label>
