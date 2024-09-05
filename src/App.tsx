@@ -12,7 +12,7 @@ function App() {
       <section className="d-flex">
         <Toaster position="top-center" />
         <SideBar />
-        <main className="container-fluid py-4 px-4">
+        <main className="container-fluid py-5 px-5">
           <Outlet />
         </main>
       </section>
