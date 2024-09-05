@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 function SideBar() {
   return (
     <section
-      className="px-4 py-5 bg-body-tertiary vh-100 border-end"
+      className="px-4 py-5 bg-body-tertiary min-vh-100 border-end"
       style={{ width: '16rem' }}
     >
       <nav>
