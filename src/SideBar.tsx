@@ -1,30 +1,32 @@
+import { NavLink } from 'react-router-dom';
+
 function SideBar() {
   return (
     <section
-      className="p-4 bg-body-tertiary vh-100 border-end"
-      style={{ width: '12rem' }}
+      className="px-4 py-5 bg-body-tertiary vh-100 border-end"
+      style={{ width: '16rem' }}
     >
       <nav>
         <ul className="nav nav-pills flex-column">
           <li className="nav-item">
-            <a className="nav-link " href="#">
+            <NavLink className="nav-link " to="/orders">
               Orders
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <NavLink className="nav-link" to="/products">
               Products
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link active" href="#">
+            <NavLink className="nav-link" to="/customers">
               Customers
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link " aria-disabled="true">
+            <NavLink className="nav-link " to="/companies">
               Companies
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>
