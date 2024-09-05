@@ -1,3 +1,4 @@
+import { formatPhoneNumber } from '../utility/formatUtlities';
 import { Customer } from './Customer';
 
 interface CustomerCardProps {
@@ -21,7 +22,9 @@ function CustomerCard({ customer }: CustomerCardProps) {
           {customer.city}, {customer.state} {customer.zip}
         </address>
         <div className="card-text small">{customer.email}</div>
-        <div className="card-text small">{customer.phone}</div>
+        <div className="card-text small">
+          {formatPhoneNumber(customer.phone)}
+        </div>
       </div>
     </div>
   );
