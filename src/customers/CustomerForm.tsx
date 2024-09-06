@@ -11,11 +11,21 @@ function CustomerForm() {
         .max(30, 'Must be 30 characters or less')
         .required('First name is required'),
       lastName: Yup.string()
-        .max(20, 'Must be 20 characters or less')
+        .max(50, 'Must be 50 characters or less')
         .required('Last name is required'),
-      email: Yup.string()
-        .email('Invalid email address')
-        .required('Email is required'),
+      address: Yup.string()
+        .max(100, 'Must be 100 characters or less')
+        .required('Address is required'),
+      city: Yup.string()
+        .max(50, 'Must be 50 characters or less')
+        .required('City is required'),
+      state: Yup.string()
+        .max(50, 'Must be 50characters or less')
+        .required('Address is required'),
+      zip: Yup.string()
+        .max(30, 'Must be 30 characters or less')
+        .required('Zip is required'),
+      email: Yup.string().email('Invalid email address'),
     }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -35,7 +45,9 @@ function CustomerForm() {
           placeholder="Enter First Name"
           {...formik.getFieldProps('firstName')}
         />
-        <div className="invalid-feedback">First Name is required.</div>
+        {formik.errors.firstName && formik.touched.firstName && (
+          <div className="invalid-feedback">First Name is required.</div>
+        )}
       </div>
 
       <div className="mb-3 form-group col-md-6">
@@ -49,7 +61,9 @@ function CustomerForm() {
           placeholder="Enter Last Name"
           {...formik.getFieldProps('lastName')}
         />
-        <div className="invalid-feedback">Last Name is required.</div>
+        {formik.errors.lastName && formik.touched.lastName && (
+          <div className="invalid-feedback">Last Name is required.</div>
+        )}
       </div>
 
       <div className="mb-3 form-group col-md-12">
@@ -63,7 +77,10 @@ function CustomerForm() {
           placeholder="Enter Address"
           {...formik.getFieldProps('address')}
         />
-        <div className="invalid-feedback">Address is required.</div>
+
+        {formik.errors.address && formik.touched.address && (
+          <div className="invalid-feedback">Address is required.</div>
+        )}
       </div>
 
       <div className="mb-3 form-group col-md-6">
@@ -77,7 +94,9 @@ function CustomerForm() {
           placeholder="Enter City"
           {...formik.getFieldProps('city')}
         />
-        <div className="invalid-feedback">City is required.</div>
+        {formik.errors.city && formik.touched.city && (
+          <div className="invalid-feedback">City is required.</div>
+        )}
       </div>
 
       <div className="mb-3 form-group col-md-2">
@@ -143,7 +162,9 @@ function CustomerForm() {
           <option value="WI">Wisconsin</option>
           <option value="WY">Wyoming</option>
         </select>
-        <div className="invalid-feedback">State is required.</div>
+        {formik.errors.state && formik.touched.state && (
+          <div className="invalid-feedback">State is required.</div>
+        )}
       </div>
 
       <div className="mb-3 form-group col-md-4">
@@ -157,7 +178,9 @@ function CustomerForm() {
           placeholder="Enter Zip"
           {...formik.getFieldProps('zip')}
         />
-        <div className="invalid-feedback">Zip is required.</div>
+        {formik.errors.zip && formik.touched.zip && (
+          <div className="invalid-feedback">Zip is required.</div>
+        )}
       </div>
 
       <div className="mb-3 form-group col-md-6">
@@ -171,7 +194,9 @@ function CustomerForm() {
           placeholder="Enter Email"
           {...formik.getFieldProps('email')}
         />
-        <div className="invalid-feedback">Email is required.</div>
+        {formik.errors.email && formik.touched.email && (
+          <div className="invalid-feedback">Email is required.</div>
+        )}
       </div>
 
       <div className="mb-3 form-group col-md-6">
@@ -185,7 +210,9 @@ function CustomerForm() {
           placeholder="Enter Phone"
           {...formik.getFieldProps('phone')}
         />
-        <div className="invalid-feedback">Phone is required.</div>
+        {formik.errors.phone && formik.touched.phone && (
+          <div className="invalid-feedback">Phone is required.</div>
+        )}
       </div>
 
       <hr />
