@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
 import { Customer } from './Customer';
 import * as Yup from 'yup';
+import clsx from 'clsx/lite';
 
 function CustomerForm() {
   const formik = useFormik({
@@ -40,7 +41,10 @@ function CustomerForm() {
         </label>
         <input
           type="text"
-          className="form-control is-invalid"
+          className={clsx(
+            'form-control',
+            formik.errors.firstName && 'is-invalid'
+          )}
           id="firstName"
           placeholder="Enter First Name"
           {...formik.getFieldProps('firstName')}
@@ -56,7 +60,10 @@ function CustomerForm() {
         </label>
         <input
           type="text"
-          className="form-control is-invalid"
+          className={clsx(
+            'form-control',
+            formik.errors.lastName && 'is-invalid'
+          )}
           id="lastName"
           placeholder="Enter Last Name"
           {...formik.getFieldProps('lastName')}
@@ -72,7 +79,10 @@ function CustomerForm() {
         </label>
         <input
           type="text"
-          className="form-control is-invalid"
+          className={clsx(
+            'form-control',
+            formik.errors.address && 'is-invalid'
+          )}
           id="address"
           placeholder="Enter Address"
           {...formik.getFieldProps('address')}
@@ -89,7 +99,7 @@ function CustomerForm() {
         </label>
         <input
           type="text"
-          className="form-control is-invalid"
+          className={clsx('form-control', formik.errors.city && 'is-invalid')}
           id="city"
           placeholder="Enter City"
           {...formik.getFieldProps('city')}
@@ -105,7 +115,7 @@ function CustomerForm() {
         </label>
 
         <select
-          className="form-select is-invalid"
+          className={clsx('form-control', formik.errors.state && 'is-invalid')}
           id="state"
           {...formik.getFieldProps('state')}
         >
@@ -173,7 +183,7 @@ function CustomerForm() {
         </label>
         <input
           type="text"
-          className="form-control is-invalid"
+          className={clsx('form-control', formik.errors.zip && 'is-invalid')}
           id="zip"
           placeholder="Enter Zip"
           {...formik.getFieldProps('zip')}
@@ -189,7 +199,7 @@ function CustomerForm() {
         </label>
         <input
           type="text"
-          className="form-control is-invalid"
+          className={clsx('form-control', formik.errors.email && 'is-invalid')}
           id="email"
           placeholder="Enter Email"
           {...formik.getFieldProps('email')}
@@ -205,7 +215,7 @@ function CustomerForm() {
         </label>
         <input
           type="text"
-          className="form-control is-invalid"
+          className={clsx('form-control', formik.errors.phone && 'is-invalid')}
           id="phone"
           placeholder="Enter Phone"
           {...formik.getFieldProps('phone')}
