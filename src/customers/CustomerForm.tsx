@@ -1,17 +1,22 @@
 import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
 import { Customer } from './Customer';
+import * as Yup from 'yup';
 
 function CustomerForm() {
   const formik = useFormik({
-    initialValues: {
-      firstName: '',
-      lastName: '',
-      address: '',
-      city: '',
-      state: '',
-      zip: '',
-    },
+    initialValues: new Customer(),
+    validationSchema: Yup.object({
+      firstName: Yup.string()
+        .max(30, 'Must be 30 characters or less')
+        .required('First name is required'),
+      lastName: Yup.string()
+        .max(20, 'Must be 20 characters or less')
+        .required('Last name is required'),
+      email: Yup.string()
+        .email('Invalid email address')
+        .required('Email is required'),
+    }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
