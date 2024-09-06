@@ -1,8 +1,24 @@
+import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
+import { Customer } from './Customer';
 
 function CustomerForm() {
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      address: '',
+      city: '',
+      state: '',
+      zip: '',
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
   return (
-    <form className="row" noValidate>
+    <form className="row" noValidate onSubmit={formik.handleSubmit}>
       <div className="mb-3 form-group col-md-6">
         <label htmlFor="firstName" className="form-label">
           First Name
@@ -10,9 +26,9 @@ function CustomerForm() {
         <input
           type="text"
           className="form-control is-invalid"
-          name="firstName"
           id="firstName"
           placeholder="Enter First Name"
+          {...formik.getFieldProps('firstName')}
         />
         <div className="invalid-feedback">First Name is required.</div>
       </div>
@@ -24,26 +40,12 @@ function CustomerForm() {
         <input
           type="text"
           className="form-control is-invalid"
-          name="lastName"
           id="lastName"
           placeholder="Enter Last Name"
+          {...formik.getFieldProps('lastName')}
         />
         <div className="invalid-feedback">Last Name is required.</div>
       </div>
-
-      {/* <div className="mb-3 form-group col-md-6 ">
-        <label htmlFor="username" className="form-label">
-          Username
-        </label>
-        <input
-          type="text"
-          className="form-control is-invalid"
-          name="username"
-          id="username"
-          placeholder="Enter Username"
-        />
-        <div className="invalid-feedback">Username is required.</div>
-      </div> */}
 
       <div className="mb-3 form-group col-md-12">
         <label htmlFor="address" className="form-label">
@@ -52,9 +54,9 @@ function CustomerForm() {
         <input
           type="text"
           className="form-control is-invalid"
-          name="address"
           id="address"
           placeholder="Enter Address"
+          {...formik.getFieldProps('address')}
         />
         <div className="invalid-feedback">Address is required.</div>
       </div>
@@ -66,9 +68,9 @@ function CustomerForm() {
         <input
           type="text"
           className="form-control is-invalid"
-          name="city"
           id="city"
           placeholder="Enter City"
+          {...formik.getFieldProps('city')}
         />
         <div className="invalid-feedback">City is required.</div>
       </div>
@@ -78,7 +80,11 @@ function CustomerForm() {
           State
         </label>
 
-        <select className="form-select is-invalid" name="state" id="state">
+        <select
+          className="form-select is-invalid"
+          id="state"
+          {...formik.getFieldProps('state')}
+        >
           <option value="">Select state...</option>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
@@ -142,9 +148,9 @@ function CustomerForm() {
         <input
           type="text"
           className="form-control is-invalid"
-          name="zip"
           id="zip"
           placeholder="Enter Zip"
+          {...formik.getFieldProps('zip')}
         />
         <div className="invalid-feedback">Zip is required.</div>
       </div>
@@ -156,9 +162,9 @@ function CustomerForm() {
         <input
           type="text"
           className="form-control is-invalid"
-          name="email"
           id="email"
           placeholder="Enter Email"
+          {...formik.getFieldProps('email')}
         />
         <div className="invalid-feedback">Email is required.</div>
       </div>
@@ -170,9 +176,9 @@ function CustomerForm() {
         <input
           type="text"
           className="form-control is-invalid"
-          name="phone"
           id="phone"
           placeholder="Enter Phone"
+          {...formik.getFieldProps('phone')}
         />
         <div className="invalid-feedback">Phone is required.</div>
       </div>
