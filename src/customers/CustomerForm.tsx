@@ -40,7 +40,7 @@ function CustomerForm() {
   });
 
   return (
-    <form className="row" noValidate onSubmit={formik.handleSubmit}>
+    <form className="row pt-4 w-75" noValidate onSubmit={formik.handleSubmit}>
       <div className="mb-3 form-group col-md-6">
         <label htmlFor="firstName" className="form-label">
           First Name
@@ -121,7 +121,7 @@ function CustomerForm() {
         </label>
 
         <select
-          className={clsx('form-control', formik.errors.state && 'is-invalid')}
+          className={clsx('form-select', formik.errors.state && 'is-invalid')}
           id="state"
           {...formik.getFieldProps('state')}
         >
@@ -231,9 +231,7 @@ function CustomerForm() {
         )}
       </div>
 
-      <hr />
-
-      <div className="d-flex gap-2 pt-2">
+      <div className="d-flex gap-2 pt-2 justify-content-end">
         <button type="submit" className="btn btn-primary">
           Save
         </button>

@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import CustomersPage from './customers/CustomersPage.tsx';
 import ErrorPage from './ErrorPage.tsx';
 import CustomerCreatePage from './customers/CustomerCreatePage.tsx';
+import CustomerEditPage from './customers/CustomerEditPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: 'customers/create',
         element: <CustomerCreatePage />,
+      },
+      {
+        path: 'customers/edit/:id',
+        element: <CustomerEditPage />,
       },
     ],
   },
