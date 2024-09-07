@@ -8,4 +8,10 @@ export class Customer {
   zip = '';
   email = '';
   phone = '';
+
+  get isNew(){
+    return this.id === undefined;
+  }
+
+
 }
