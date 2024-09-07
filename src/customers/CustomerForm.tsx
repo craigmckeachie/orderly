@@ -1,10 +1,13 @@
 import { useFormik } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Customer } from './Customer';
 import * as Yup from 'yup';
 import clsx from 'clsx/lite';
+import { customersAPI } from './customersAPI';
 
 function CustomerForm() {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: new Customer(),
     validationSchema: Yup.object({
@@ -28,8 +31,11 @@ function CustomerForm() {
         .required('Zip is required'),
       email: Yup.string().email('Invalid email address'),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      // alert(JSON.stringify(values, null, 2));
+
+      await customersAPI.post(values as Customer);
+      navigate('/customers');
     },
   });
 
