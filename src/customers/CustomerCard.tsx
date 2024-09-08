@@ -9,26 +9,48 @@ interface CustomerCardProps {
 function CustomerCard({ customer }: CustomerCardProps) {
   return (
     <div className="card p-4">
-      <Link className='text-decoration-none text-secondary' to={`./edit/${customer.id}`}>
+      <div className="d-flex justify-content-between">
         <span className="customer-circle d-flex bg-secondary fs-3 text-white align-items-center justify-content-center rounded-circle">
           {customer.firstName?.substring(0, 1)}
           {customer.lastName?.substring(0, 1)}
         </span>
-        <div className="card-body">
-          <h5 className="card-title">
-            {customer.firstName} {customer.lastName}
-          </h5>
-          <address>
-            {customer.address}
-            <br />
-            {customer.city}, {customer.state} {customer.zip}
-          </address>
-          <div className="card-text small">{customer.email}</div>
-          <div className="card-text small">
-            {formatPhoneNumber(customer.phone)}
-          </div>
+        <details className="dropdown mb-5">
+          <summary className="btn text-decoration-none no-caret fs-4">
+            &#x22EE;
+          </summary>
+
+          <ul className="dropdown-menu" style={{ display: 'revert' }}>
+            <li className="dropdown-item">
+              <Link
+                className="dropdown-link text-decoration-none text-body"
+                to={`./edit/${customer.id}`}
+              >
+                Edit
+              </Link>
+            </li>
+            <li>
+              <a className="dropdown-item" href="#">
+                Delete
+              </a>
+            </li>
+          </ul>
+        </details>
+      </div>
+
+      <div className="card-body">
+        <h5 className="card-title">
+          {customer.firstName} {customer.lastName}
+        </h5>
+        <address>
+          {customer.address}
+          <br />
+          {customer.city}, {customer.state} {customer.zip}
+        </address>
+        <div className="card-text small">{customer.email}</div>
+        <div className="card-text small">
+          {formatPhoneNumber(customer.phone)}
         </div>
-      </Link>
+      </div>
     </div>
   );
 }
