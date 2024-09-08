@@ -20,9 +20,9 @@ function CustomerCard({ customer }: CustomerCardProps) {
           </summary>
 
           <ul className="dropdown-menu" style={{ display: 'revert' }}>
-            <li className="dropdown-item">
+            <li>
               <Link
-                className="dropdown-link text-decoration-none text-body"
+                className="dropdown-item text-decoration-none text-body"
                 to={`./edit/${customer.id}`}
               >
                 Edit
