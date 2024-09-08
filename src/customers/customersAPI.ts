@@ -10,6 +10,15 @@ export const customersAPI = {
       .then((response) => response.json());
   },
 
+  find(id: number): Promise<Customer> {
+    return fetch(`http://localhost:3000/customers/${id}`)
+      .then((response) => {
+        if (!response.ok) throw new Error('http error');
+        return response;
+      })
+      .then((response) => response.json());
+  },
+
   post(customer: Customer): Promise<Customer> {
     return fetch(`http://localhost:3000/customers`, {
       method: 'POST',
@@ -26,8 +35,8 @@ export const customersAPI = {
   },
 
   put(customer: Customer): Promise<Customer> {
-    return fetch(`http://localhost:3000/customers`, {
-      method: 'POST',
+    return fetch(`http://localhost:3000/customers/${customer.id}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },

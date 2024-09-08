@@ -1,6 +1,6 @@
 export function formatPhoneNumber(phoneNumber: string): string {
   if (phoneNumber.length !== 10) {
-    return 'Invalid phone number';
+    return '';
   }
 
   const areaCode = phoneNumber.substring(0, 3);

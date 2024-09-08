@@ -1,15 +1,33 @@
 import { useFormik } from 'formik';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Customer } from './Customer';
 import * as Yup from 'yup';
 import clsx from 'clsx/lite';
 import { customersAPI } from './customersAPI';
+import { useEffect, useState } from 'react';
 
 function CustomerForm() {
+  const { id: customerIdAsString } = useParams<{ id: string }>();
+  const id = Number(customerIdAsString);
   const navigate = useNavigate();
+  const [initalCustomer, setInitalCustomer] = useState<Customer | undefined>(
+    undefined
+  );
+
+  async function loadCustomer() {
+    const data = await customersAPI.find(id);
+    setInitalCustomer(data);
+  }
+
+  useEffect(() => {
+    if (id) {
+      loadCustomer();
+    }
+  }, []);
 
   const formik = useFormik({
-    initialValues: new Customer(),
+    enableReinitialize: true,
+    initialValues: initalCustomer || new Customer(),
     validationSchema: Yup.object({
       firstName: Yup.string()
         .max(30, 'Must be 30 characters or less')
@@ -32,8 +50,6 @@ function CustomerForm() {
       email: Yup.string().email('Invalid email address'),
     }),
     onSubmit: async (customer: Customer) => {
-      // alert(JSON.stringify(values, null, 2));
-
       if (customer.isNew) {
         await customersAPI.post(customer);
       } else {
@@ -44,7 +60,7 @@ function CustomerForm() {
   });
 
   return (
-    <div className='bg-body-tertiary p-4 rounded'>
+    <div className="bg-body-tertiary p-4 rounded">
       <form className="row pt-4 w-75" noValidate onSubmit={formik.handleSubmit}>
         <div className="mb-3 form-group col-md-6">
           <label htmlFor="firstName" className="form-label">
