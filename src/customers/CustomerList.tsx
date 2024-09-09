@@ -24,6 +24,10 @@ function CustomerList() {
     loadCustomers();
   }, []);
 
+  function removeCustomer(customer: Customer) {
+    setCustomers(customers.filter((c) => c.id !== customer.id));
+  }
+
   return (
     <section
       role="list"
@@ -31,7 +35,11 @@ function CustomerList() {
     >
       {loading && <span>Loading...</span>}
       {customers?.map((customer) => (
-        <CustomerCard key={customer.id} customer={customer} />
+        <CustomerCard
+          key={customer.id}
+          customer={customer}
+          onRemove={removeCustomer}
+        />
       ))}
     </section>
   );

@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom';
 import { formatPhoneNumber } from '../utility/formatUtlities';
 import { Customer } from './Customer';
+import { customersAPI } from './customersAPI';
+import toast from 'react-hot-toast';
 
 interface CustomerCardProps {
   customer: Customer;
+  onRemove: (customer: Customer) => void;
 }
 
-function CustomerCard({ customer }: CustomerCardProps) {
+function CustomerCard({ customer, onRemove }: CustomerCardProps) {
   return (
     <div className="card p-4">
       <div className="d-flex justify-content-between">
@@ -29,9 +32,23 @@ function CustomerCard({ customer }: CustomerCardProps) {
               </Link>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <button
+                className="dropdown-item"
+                onClick={async () => {
+                 
+                  if (
+                    confirm('Are you sure you want to delete this product?')
+                  ) {
+                    if (customer.id) {
+                      await customersAPI.delete(customer.id);
+                      onRemove(customer);
+                      toast.success('Successfully deleted.');
+                    }
+                  }
+                }}
+              >
                 Delete
-              </a>
+              </button>
             </li>
           </ul>
         </details>

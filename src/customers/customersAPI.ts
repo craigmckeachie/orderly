@@ -48,4 +48,15 @@ export const customersAPI = {
       })
       .then((response) => response.json());
   },
+
+  delete(id: number): Promise<Customer> {
+    return fetch(`http://localhost:3000/customers/${id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error('http error');
+        return response;
+      })
+      .then((response) => response.json());
+  },
 };
